@@ -95,6 +95,11 @@ import (
 
 func main() {
 	r := gin.Default()
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"message": "pong",
+		})
+	})	
 	api := r.Group("/api")
 	gin.DebugPrintRouteFunc = func(httpMethod, absolutePath, handlerName string, nuHandlers int) {
 		log.Printf("endpoint %v %v %v %v\n", httpMethod, absolutePath, handlerName, nuHandlers)
@@ -108,6 +113,7 @@ func main() {
 	}
 	// /api/swagger/index.html
 	api.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
+	log.Printf("GOGOGO")
 	r.Run(":8080")
 }
 

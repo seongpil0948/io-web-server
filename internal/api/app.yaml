@@ -1,0 +1,2 @@
+# https://cloud.google.com/appengine/docs/standard/go/config/appref?hl=ko
+runtime: go118  # or another supported version
